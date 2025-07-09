@@ -1,28 +1,18 @@
-import './App.css';
+import React from 'react';
+import Sidebar from './components/Sidebar';
+import MainContent from './components/MainContent';
+import { AppProvider } from './context/AppContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
+    <AppProvider>
+      <div className="container mx-auto p-4 lg:p-8">
+        <div className="flex flex-col lg:flex-row gap-8">
+          <Sidebar />
+          <MainContent />
+        </div>
+      </div>
+    </AppProvider>
   );
 }
 
