@@ -15,7 +15,13 @@ export const useGitHub = (username) => {
           throw new Error('Failed to fetch projects from GitHub');
         }
         const data = await response.json();
-        setProjects(data.slice(0, 6)); // Pega os 6 projetos mais recentes
+        
+        // Filtra os projetos que contêm o tópico "portfolio"
+        const portfolioProjects = data.filter(project => 
+          project.topics && project.topics.includes('portfolio')
+        );
+
+        setProjects(portfolioProjects); // Define o estado com os projetos filtrados
       } catch (err) {
         setError(err.message);
         console.error(err);
